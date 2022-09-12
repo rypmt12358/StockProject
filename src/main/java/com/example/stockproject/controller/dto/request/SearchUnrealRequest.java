@@ -13,4 +13,7 @@ public class SearchUnrealRequest {
     private String branchNo;
     private String custSeq;
     private String stock;
+
+//    private  Double max;
+//    private Double min;
 }
