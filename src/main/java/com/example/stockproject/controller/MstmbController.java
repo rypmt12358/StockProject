@@ -3,6 +3,7 @@ package com.example.stockproject.controller;
 
 
 import com.example.stockproject.controller.dto.request.CreateMstmbRequest;
+import com.example.stockproject.controller.dto.request.UpdateMstmbRequest;
 import com.example.stockproject.controller.dto.response.StatusResponse;
 import com.example.stockproject.model.entity.Mstmb;
 import com.example.stockproject.service.MstmbService;
@@ -35,5 +36,14 @@ public class MstmbController {
         return new StatusResponse(response);
     }
 
+    @PostMapping("/updateCurPrice")
+    public StatusResponse updateCurPrice(@RequestBody UpdateMstmbRequest request){
+        StatusResponse response = mstmbService.updateCurPrice(request);
+        return response;
+
+    }
+
+
 
 }
+

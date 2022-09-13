@@ -8,9 +8,11 @@ import com.example.stockproject.model.MstmbRepository;
 import com.example.stockproject.model.TcnudRepository;
 import com.example.stockproject.model.entity.CreateDetail;
 import com.example.stockproject.model.entity.Hcmio;
+import com.example.stockproject.model.entity.Tcnud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.List;
 import static org.apache.logging.log4j.util.Strings.isBlank;
 
 @Service
-
+@Transactional
 public class HcmioService {
     @Autowired
     private HcmioRepository hcmioRepository;
@@ -37,7 +39,6 @@ public class HcmioService {
         Hcmio hcmio = hcmioRepository.getHcmioByDocSeq(docseq);
         return hcmio;
     }
-
 
     public CreatDetailResponse createHcmio(CreateHcmioRequest request) {
         Hcmio hcmio = new Hcmio();
@@ -72,10 +73,26 @@ public class HcmioService {
         hcmio.setModUser("Chih");
         hcmioRepository.save(hcmio);
 
-        tcnudRepository.CreatTcnud(
-                hcmio.getTradeDate(), hcmio.getBranchNo(), hcmio.getCustSeq(), hcmio.getDocSeq(),
-                hcmio.getStock(), hcmio.getPrice(), hcmio.getQty(), hcmio.getQty(), hcmio.getFee(),
-                hcmio.getAmt() + hcmio.getFee(), hcmio.getModDate(), hcmio.getModTime(), hcmio.getModUser());
+//        tcnudRepository.CreatTcnud(
+//                hcmio.getTradeDate(), hcmio.getBranchNo(), hcmio.getCustSeq(), hcmio.getDocSeq(),
+//                hcmio.getStock(), hcmio.getPrice(), hcmio.getQty(), hcmio.getQty(), hcmio.getFee(),
+//                hcmio.getAmt() + hcmio.getFee(), hcmio.getModDate(), hcmio.getModTime(), hcmio.getModUser());
+        Tcnud tcnud = new Tcnud();
+        tcnud.setTradeDate(hcmio.getTradeDate());
+        tcnud.setBranchNo(hcmio.getBranchNo());
+        tcnud.setCustSeq(hcmio.getCustSeq());
+        tcnud.setDocSeq(hcmio.getDocSeq());
+        tcnud.setStock(hcmio.getStock());
+        tcnud.setPrice(hcmio.getPrice());
+        tcnud.setQty(hcmio.getQty());
+        tcnud.setRemainQty(hcmio.getQty());
+        tcnud.setFee(hcmio.getFee());
+        tcnud.setCost(hcmio.getAmt() + hcmio.getFee());
+        tcnud.setModDate(hcmio.getModDate());
+        tcnud.setModTime(hcmio.getModTime());
+        tcnud.setModUser(hcmio.getModUser());
+        tcnudRepository.save(tcnud);
+
 
         CreateDetail createDetail = new CreateDetail();
         createDetail.setTradeDate(hcmio.getTradeDate());

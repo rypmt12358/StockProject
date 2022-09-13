@@ -19,11 +19,11 @@ public interface TcnudRepository extends JpaRepository<Tcnud, PkRefer> {
     void CreatTcnud(@Param("TradeDate")String TradeDate, @Param("BranchNo")String BranchNo, @Param("CustSeq")String CustSeq, @Param("DocSeq")String DocSeq, @Param("Stock")String Stock, @Param("Price")double Price, @Param("Qty")double Qty, @Param("RemainQty")double RemainQty, @Param("Fee")double Fee, @Param("Cost")double Cost, @Param("ModDate")String ModDate, @Param("ModTime")String ModTime, @Param("ModUser")String ModUser);
 */
 
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO tcnud(TradeDate, BranchNo, CustSeq, DocSeq, Stock, Price, Qty, RemainQty, Fee, Cost, ModDate, ModTime, ModUser) " +
-            "VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)", nativeQuery = true)
-    void CreatTcnud(String tradeDate, String branchNo, String custSeq, String docSeq, String stock, double price, double qty, double remainQty, double fee, double cost, String modDate, String modTime, String modUser);
+//    @Modifying
+//    @Transactional
+//    @Query(value = "INSERT INTO tcnud(TradeDate, BranchNo, CustSeq, DocSeq, Stock, Price, Qty, RemainQty, Fee, Cost, ModDate, ModTime, ModUser) " +
+//            "VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)", nativeQuery = true)
+//    void CreatTcnud(String tradeDate, String branchNo, String custSeq, String docSeq, String stock, double price, double qty, double remainQty, double fee, double cost, String modDate, String modTime, String modUser);
 
     @Modifying
     @Transactional
