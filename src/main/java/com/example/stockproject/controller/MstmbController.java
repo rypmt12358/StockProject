@@ -3,7 +3,7 @@ package com.example.stockproject.controller;
 
 
 import com.example.stockproject.controller.dto.request.CreateMstmbRequest;
-import com.example.stockproject.controller.dto.request.UpdateMstmbRequest;
+import com.example.stockproject.controller.dto.request.UpdateCurPriceRequest;
 import com.example.stockproject.controller.dto.response.StatusResponse;
 import com.example.stockproject.model.entity.Mstmb;
 import com.example.stockproject.service.MstmbService;
@@ -37,7 +37,7 @@ public class MstmbController {
     }
 
     @PostMapping("/updateCurPrice")
-    public StatusResponse updateCurPrice(@RequestBody UpdateMstmbRequest request){
+    public StatusResponse updateCurPrice(@RequestBody UpdateCurPriceRequest request){
         StatusResponse response = mstmbService.updateCurPrice(request);
         return response;
 

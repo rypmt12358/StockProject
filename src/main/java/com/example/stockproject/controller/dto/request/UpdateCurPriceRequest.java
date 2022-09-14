@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateMstmbRequest {
+public class UpdateCurPriceRequest {
     private String stock;
     private Double curPrice;
 }

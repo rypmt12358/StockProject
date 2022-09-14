@@ -2,7 +2,7 @@ package com.example.stockproject.service;
 
 
 import com.example.stockproject.controller.dto.request.CreateMstmbRequest;
-import com.example.stockproject.controller.dto.request.UpdateMstmbRequest;
+import com.example.stockproject.controller.dto.request.UpdateCurPriceRequest;
 import com.example.stockproject.controller.dto.response.StatusResponse;
 import com.example.stockproject.model.MstmbRepository;
 import com.example.stockproject.model.entity.Mstmb;
@@ -49,7 +49,7 @@ public class MstmbService {
 
         return "ok";
     }
-    public StatusResponse updateCurPrice(UpdateMstmbRequest request){
+    public StatusResponse updateCurPrice(UpdateCurPriceRequest request){
         StatusResponse response = new StatusResponse();
         if (isBlank(request.getStock()) || request.getCurPrice()==null) {
             response.setStatus("FAIL");
